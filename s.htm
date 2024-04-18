@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Display Data</h2>
+    <div id="displayArea"></div>
+
+    <script>
+        // Function to extract query parameters from URL
+        function getQueryVariable(variable) {
+            const query = window.location.search.substring(1);
+            const vars = query.split('&');
+            for (let i = 0; i < vars.length; i++) {
+                const pair = vars[i].split('=');
+                if (decodeURIComponent(pair[0]) === variable) {
+                    return decodeURIComponent(pair[1]);
+                }
+            }
+            return null;
+        }
+
+        // Get input values from URL query parameters
+        const input1 = getQueryVariable('input1');
+        const input2 = getQueryVariable('input2');
+
+        // Display the input values on the page
+        const displayArea = document.getElementById('displayArea');
+        displayArea.innerHTML = <p>Input 1: ${input1}</p><p>Input 2: ${input2}</p>;
+    </script>
+</body>
+</html>
